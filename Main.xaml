@@ -6,7 +6,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>722,910</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>973,1067</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Main2_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -160,13 +160,27 @@
                 <TryCatch.Try>
                   <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke GetTransactionData workflow" sap:VirtualizedContainerService.HintSize="334,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_20" UnSafe="False" WorkflowFileName="Framework\GetTransactionData.xaml">
                     <ui:InvokeWorkflowFile.Arguments>
-                      <InArgument x:TypeArguments="x:Int32" x:Key="in_TransactionNumber">[TransactionNumber]</InArgument>
-                      <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[Config]</InArgument>
-                      <OutArgument x:TypeArguments="sd:DataRow" x:Key="out_TransactionItem">[TransactionItem]</OutArgument>
-                      <OutArgument x:TypeArguments="x:String" x:Key="out_TransactionField1">[TransactionField1]</OutArgument>
-                      <OutArgument x:TypeArguments="x:String" x:Key="out_TransactionField2">[TransactionField2]</OutArgument>
-                      <OutArgument x:TypeArguments="x:String" x:Key="out_TransactionID">[TransactionID]</OutArgument>
-                      <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_dt_TransactionData">[dt_TransactionData]</InOutArgument>
+                      <InArgument x:TypeArguments="x:Int32" x:Key="in_TransactionNumber">
+                        <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="TransactionNumber" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
+                        <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="Config" />
+                      </InArgument>
+                      <OutArgument x:TypeArguments="sd:DataRow" x:Key="out_TransactionItem">
+                        <VisualBasicReference x:TypeArguments="sd:DataRow" ExpressionText="TransactionItem" />
+                      </OutArgument>
+                      <OutArgument x:TypeArguments="x:String" x:Key="out_TransactionField1">
+                        <VisualBasicReference x:TypeArguments="x:String" ExpressionText="TransactionField1" />
+                      </OutArgument>
+                      <OutArgument x:TypeArguments="x:String" x:Key="out_TransactionField2">
+                        <VisualBasicReference x:TypeArguments="x:String" ExpressionText="TransactionField2" />
+                      </OutArgument>
+                      <OutArgument x:TypeArguments="x:String" x:Key="out_TransactionID">
+                        <VisualBasicReference x:TypeArguments="x:String" ExpressionText="TransactionID" />
+                      </OutArgument>
+                      <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_dt_TransactionData">
+                        <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="dt_TransactionData" />
+                      </InOutArgument>
                     </ui:InvokeWorkflowFile.Arguments>
                   </ui:InvokeWorkflowFile>
                 </TryCatch.Try>
@@ -581,9 +595,9 @@
                               </If>
                               <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke InitiAllApplications workflow" sap:VirtualizedContainerService.HintSize="478,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Framework\InitAllApplications.xaml">
                                 <ui:InvokeWorkflowFile.Arguments>
-                                  <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[Config]</InArgument>
-                                  <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_SubstituteItems">[dt_TransactionData]</OutArgument>
-                                  <OutArgument x:TypeArguments="s:Exception" x:Key="out_SystemException">[SystemException]</OutArgument>
+                                  <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
+                                    <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="Config" />
+                                  </InArgument>
                                 </ui:InvokeWorkflowFile.Arguments>
                               </ui:InvokeWorkflowFile>
                             </Sequence>
