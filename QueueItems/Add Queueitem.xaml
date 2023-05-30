@@ -1,11 +1,12 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="Add_Queueitem" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_TransactionItem" Type="InArgument(sd:DataRow)" />
+    <x:Property Name="in_str_ScheduleRun" Type="InArgument(x:String)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>674,1099</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1006,1185</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Add_Queueitem_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="26">
@@ -38,7 +39,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="36">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="37">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>System.Private.CoreLib</AssemblyReference>
@@ -74,9 +75,10 @@
       <AssemblyReference>System.Data.SqlClient</AssemblyReference>
       <AssemblyReference>System.Data.Common</AssemblyReference>
       <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Add_Queueitem" sap:VirtualizedContainerService.HintSize="493,1034" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Add_Queueitem" sap:VirtualizedContainerService.HintSize="493,766" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="Buyer" />
       <Variable x:TypeArguments="x:String" Name="Facility" />
@@ -86,11 +88,12 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message - Start Message" sap:VirtualizedContainerService.HintSize="431,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;MartBot: Add queue with the item &quot; + in_TransactionItem(&quot;Item&quot;).ToString]" />
-    <ui:MultipleAssign DisplayName="Multiple Assign - Buyer &amp; Facility" sap:VirtualizedContainerService.HintSize="431,132" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+    <ui:LogMessage DisplayName="Log Message - Start Message" sap:VirtualizedContainerService.HintSize="431,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;UiPathBot: Add queue with the item &quot; + in_TransactionItem(&quot;Item&quot;).ToString]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="431,92" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;UiPathBot: The Buyer &quot; + in_TransactionItem(&quot;Buyer&quot;).ToString + &quot; And Facility &quot; + in_TransactionItem(&quot;Facility&quot;).ToString.Trim + &quot; are Allowed to be processed&quot;]" />
+    <ui:MultipleAssign DisplayName="Multiple Assign - Buyer &amp; Facility" sap:VirtualizedContainerService.HintSize="431,132" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
       <ui:MultipleAssign.AssignOperations>
         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
-          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_4">
             <ui:AssignOperation.To>
               <OutArgument x:TypeArguments="x:String">[Buyer]</OutArgument>
             </ui:AssignOperation.To>
@@ -98,7 +101,7 @@
               <InArgument x:TypeArguments="x:String">[in_TransactionItem("Buyer").ToString]</InArgument>
             </ui:AssignOperation.Value>
           </ui:AssignOperation>
-          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_5">
             <ui:AssignOperation.To>
               <OutArgument x:TypeArguments="x:String">[Facility]</OutArgument>
             </ui:AssignOperation.To>
@@ -109,13 +112,14 @@
         </scg:List>
       </ui:MultipleAssign.AssignOperations>
     </ui:MultipleAssign>
-    <ui:AddQueueItem ServiceBaseAddress="{x:Null}" DisplayName="Add Queue Item - Add QueueItem" FolderPath="Development/Substitute" sap:VirtualizedContainerService.HintSize="431,619" sap2010:WorkflowViewState.IdRef="AddQueueItem_1" Priority="Normal" QueueType="SubstituteItems">
+    <ui:AddQueueItem ServiceBaseAddress="{x:Null}" DisplayName="Add Queue Item - Add QueueItem" FolderPath="Development/Substitute" sap:VirtualizedContainerService.HintSize="431,219" sap2010:WorkflowViewState.IdRef="AddQueueItem_2" Priority="Normal" QueueType="SubstituteItems">
       <ui:AddQueueItem.ItemInformation>
         <InArgument x:TypeArguments="x:String" x:Key="Item">[in_TransactionItem("Item").ToString]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="Facility">[If( Facility.Length = 1, "0" + Facility, Facility )]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="Buyer">[If( Buyer.Length = 1, "0" + Buyer, Buyer )]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="Substitution Code">[in_TransactionItem("Substitution Code").ToString]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="SubItem">[in_TransactionItem("SubItem").ToString]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="ScheduleRun">[in_str_ScheduleRun]</InArgument>
       </ui:AddQueueItem.ItemInformation>
       <ui:AddQueueItem.Reference>
         <InArgument x:TypeArguments="x:String" />
